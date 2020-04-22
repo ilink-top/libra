@@ -26,13 +26,11 @@
         "less": "^3.11.1",
         "less-loader": "^5.0.0",
         "lodash": "^4.17.13",
-        "popper.js": "^1.12",
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.15.2",
         "sass-loader": "^8.0.0",
         "select2": "^4.0.13",
         "toastr": "^2.1.4",
-        "vue-template-compiler": "^2.6.11",
         "wangeditor": "^3.1.1"
     },
     "dependencies": {}
