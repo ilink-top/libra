@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{__('admin.system_name')}} | @section('title') {{$system['title']}} @show</title>
+  <title>{{__('admin.system_name')}} | @yield('title')</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <meta name="csrf-token" content="{{csrf_token()}}">
   <link rel="stylesheet" href="{{mix('css/admin.css')}}">
@@ -17,7 +17,16 @@
 
 <body class="hold-transition @yield('body-style')">
   @yield('content')
+  <script src="{{mix('js/bootstrap.js')}}"></script>
   <script src="{{mix('js/admin.js')}}"></script>
+  <script>
+    var setting = {
+      toastr: {
+        type: "{{session('toastr')}}",
+        message: "{{session('message')}}",
+      }
+    }
+  </script>
   @stack('scripts')
 </body>
 

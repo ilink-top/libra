@@ -1,20 +1,14 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
 // Font Awesome
-@import '~font-awesome/scss/font-awesome';
+@import '~font-awesome/css/font-awesome.css';
 
 // Font Awesonme Iconpicker
 @import '~fontawesome-iconpicker/dist/css/fontawesome-iconpicker.min.css';
 
 // Ionicons
-@import '~ionicons/dist/scss/ionicons';
+@import '~ionicons/dist/css/ionicons.css';
 
 // Toastr
-@import '~toastr/toastr';
+@import '~toastr/build/toastr.css';
 
 // jQuery TreeGrid
 @import '~jquery-treegrid/css/jquery.treegrid.css';
@@ -26,7 +20,7 @@
 @import '~bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css';
 
 // Bootstrap Fileinput
-@import '~bootstrap-fileinput/scss/fileinput';
+@import '~bootstrap-fileinput/css/fileinput.css';
 
 // DataTables
 @import '~datatables.net-bs/css/dataTables.bootstrap.min.css';

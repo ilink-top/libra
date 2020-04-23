@@ -10,7 +10,25 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
+    require('fontawesome-iconpicker')
+
+    require('form-serializer')
+
+    window.toastr = require('toastr')
+
+    require('jquery-treegrid/js/jquery.treegrid')
+    require('jquery-treegrid/js/jquery.treegrid.bootstrap3')
+
     require('bootstrap');
+
+    require('bootstrap-switch')
+
+    require('bootstrap-fileinput')
+    require('bootstrap-fileinput/js/locales/zh')
+
+    require('datatables.net-bs')
+
+    require('admin-lte')
 } catch (e) {}
 
 /**
@@ -39,3 +57,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+require('icheck')
+
+require('select2')
+
+window.wangEditor = require('wangeditor')

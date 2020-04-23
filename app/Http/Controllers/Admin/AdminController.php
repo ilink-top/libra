@@ -46,7 +46,7 @@ class AdminController extends BaseController
     {
         return view('admin.show', [
             'roleList' => AuthRole::getData([
-                ['guard_name', '=', $this->guardName()],
+                ['guard_name', '=', Admin::guardName()],
             ]),
         ]);
     }
@@ -70,7 +70,7 @@ class AdminController extends BaseController
         return view('admin.show', [
             'info' => $admin,
             'roleList' => AuthRole::getData([
-                ['guard_name', '=', $this->guardName()],
+                ['guard_name', '=', Admin::guardName()],
             ]),
         ]);
     }
@@ -80,7 +80,7 @@ class AdminController extends BaseController
         return view('admin.show', [
             'info' => $admin,
             'roleList' => AuthRole::getData([
-                ['guard_name', '=', $this->guardName()],
+                ['guard_name', '=', Admin::guardName()],
             ]),
         ]);
     }

@@ -9,7 +9,7 @@ class AdminProfile extends FormRequest
 {
     public function rules()
     {
-        $user = \Auth::guard(Admin::guardName())->user();
+        $user = admin_user();
         return [
             'username' => [
                 'required',

@@ -32,6 +32,6 @@ class LoginController extends BaseController
 
     protected function guard()
     {
-        return parent::guard();
+        return admin_guard();
     }
 }

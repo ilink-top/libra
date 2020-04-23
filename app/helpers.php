@@ -1,5 +1,13 @@
 <?php
 
+// 记录日志
+if (!function_exists('trace')) {
+    function trace($message, array $context = [], $level = 'info')
+    {
+        Log::log($level, $message, $context);
+    }
+}
+
 // 打印SQL记录
 if (!function_exists('querylog')) {
     function querylog()
@@ -19,7 +27,7 @@ if (!function_exists('querylog')) {
 
             $sql = vsprintf($sql, $query->bindings);
 
-            Log::info($sql . PHP_EOL);
+            trace($sql . PHP_EOL);
         });
     }
 }
@@ -31,10 +39,26 @@ if (!function_exists('upload_path')) {
     }
 }
 
-// 获取所有guards名称
+// 获取所有 guards 名称
 if (!function_exists('guards')) {
     function guards()
     {
         return array_keys(config('auth.guards'));
+    }
+}
+
+// 获取后台 guard
+if (!function_exists('admin_guard')) {
+    function admin_guard()
+    {
+        return Auth::guard(App\Models\Admin::guardName());
+    }
+}
+
+// 获取后台 user
+if (!function_exists('admin_user')) {
+    function admin_user()
+    {
+        return admin_guard()->user();
     }
 }

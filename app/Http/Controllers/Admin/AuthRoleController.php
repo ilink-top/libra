@@ -39,7 +39,7 @@ class AuthRoleController extends BaseController
                 'data-remote' => route('admin.auth_role.destroy', $authRole->id),
             ]);
         }
-        if (!$this->user()->can('admin.auth_role_permission.index')) {
+        if ($this->user()->can('admin.auth_role_permission.index')) {
             $html[] = \Form::button('权限', [
                 'class' => 'btn btn-xs btn-primary modal-form',
                 'data-remote' => route('admin.auth_role_permission.index', $authRole->id),

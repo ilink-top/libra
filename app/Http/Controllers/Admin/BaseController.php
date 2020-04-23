@@ -53,18 +53,8 @@ class BaseController extends Controller
             ->with('message', $message);
     }
 
-    protected function guardName()
-    {
-        return Admin::guardName();
-    }
-
-    protected function guard()
-    {
-        return \Auth::guard($this->guardName());
-    }
-
     protected function user()
     {
-        return $this->guard()->user();
+        return admin_user();
     }
 }

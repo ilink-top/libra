@@ -1,6 +1,7 @@
 <!-- 位于 auth_role_permission/index.blade.php -->
 @extends('layout.mini')
 @section('content')
+{!! Form::model($info, ['route' => ['admin.auth_role_permission.update', $info->id], 'method' => 'POST', 'id' => 'libra-form']) !!}
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="{{__('admin.close')}}">
     <span aria-hidden="true">&times;</span></button>
@@ -8,11 +9,10 @@
 </div>
 <div class="modal-body">
   <div class="form-group">
-    {{ Form::label('permission_id', '权限', ['class' => 'col-md-2 control-label']) }}
     @foreach ($permissionData as $list)
     <div class="row">
       @foreach ($list as $row)
-      <div class="col-md-3">
+      <div class="col-md-4">
         <label>
           {{ Form::checkbox('permission_id[]', $row->id, $info->permission_id->contains($row->id), ['class' => 'icheck']) }}
           {{$row->title}}

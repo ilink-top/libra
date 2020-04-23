@@ -2,9 +2,10 @@
 @extends('layout.mini')
 @section('content')
 @if (empty($info))
-{!! Form::open(['route' => ['admin.admin.store'], 'method' => 'POST', 'id' => 'libra-form']) !!}
+{!! Form::open(['route' => ['admin.admin.store'], 'method' => 'POST', 'files' => true, 'id' => 'libra-form']) !!}
 @else
-{!! Form::model($info, ['route' => ['admin.admin.update', $info->id], 'method' => 'PUT', 'id' => 'libra-form']) !!}
+{!! Form::model($info, ['route' => ['admin.admin.update', $info->id], 'method' => 'PUT', 'files' => true, 'id' =>
+'libra-form']) !!}
 @endif
 <div class="modal-header">
   <button type="button" class="close" data-dismiss="modal" aria-label="{{__('admin.close')}}">
@@ -47,11 +48,13 @@
 @endsection
 @push('scripts')
 <script>
-  var fileinputOptions = {};
-  var avatarData = "{{!empty($info->avatar) ? asset($info->avatar) : ''}}";
-  if (avatarData) {
-    fileinputOptions.initialPreview = fileinputPreview(avatarData);
-  }
-  $('#avatar').fileinput(fileinputOptions)
+  $(function () {
+    var fileinputOptions = {};
+    var avatarData = "{{!empty($info->avatar) ? asset($info->avatar) : ''}}";
+    if (avatarData) {
+      fileinputOptions.initialPreview = fileinputPreview(avatarData);
+    }
+    $('#avatar').fileinput(fileinputOptions)
+  })
 </script>
 @endpush

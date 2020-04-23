@@ -1,5 +1,6 @@
 <!-- 位于 login/index.blade.php -->
-@extends('layout.mini')
+@extends('layout.auth')
+@section('title', '登录')
 @section('body-style', 'login-page')
 @section('content')
 <div class="login-box">

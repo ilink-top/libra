@@ -36,9 +36,27 @@ class AdminMenu extends Model
 
     public static function getTree()
     {
-        $list = self::getMenu();
+        $list = self::getMenu()->filter(function ($row) {
+            $url = url($row->uri);
+            if (!is_string($url)) {
+                return true;
+            }
+            return admin_user()->isDisabledUrl($url) === false;
+        });
         $list = \Tree::tree($list);
+        $list = self::clearEmptyMenu($list);
         return $list;
+    }
+
+    public static function clearEmptyMenu($list)
+    {
+        $data = [];
+        foreach ($list as $key => $row) {
+            if (!empty($row->uri) || !empty($row->children)) {
+                $data[$key] = $row;
+            }
+        }
+        return $list == $data ? $data : self::clearEmptyMenu($data);
     }
 
     public static function getTreeList($where = [])

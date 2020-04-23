@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/admin.js', 'public/js')
-    .sass('resources/assets/sass/admin.scss', 'public/css')
-    // .less('resources/assets/less/admin.less', 'public/css')
-    .copy('resources/assets/images/', 'public/images');
+mix.copy('resources/assets/images/', 'public/images')
+    .js('resources/assets/js/bootstrap.js', 'public/js')
+    .js('resources/assets/js/admin.js', 'public/js')
+    .sass('resources/assets/sass/admin.scss', 'public/css');

@@ -51,4 +51,16 @@ class Admin extends Authenticatable
     {
         return 'admin';
     }
+
+    public function getDisabledPermissions()
+    {
+        return AuthPermission::whereNotIn('id', $this->getAllPermissions()->pluck('id'))->get();
+    }
+
+    public function isDisabledUrl($url)
+    {
+        $request = app('request')->create($url);
+        $route = app('router')->getRoutes()->match($request);
+        return $this->getDisabledPermissions()->contains('name', $route->getName());
+    }
 }

@@ -1,27 +1,26 @@
-require('./bootstrap')
+// Font Awesome Iconpicker
+$('input.icp').iconpicker({
+    placement: 'bottomRight',
+    templates: {
+        search: '<input type="search" class="form-control iconpicker-search" placeholder="筛选" />'
+    }
+})
 
-require('fontawesome-iconpicker')
-
-// jQuery serializeObject
-require('form-serializer')
-
-// Toastr
-window.toastr = require('toastr')
+// jQuery Toastr
 toastr.options = {
     'closeButton': true,
     'positionClass': 'toast-top-center',
 }
 
-// jQuery TreeGrid
-require('jquery-treegrid/js/jquery.treegrid')
-require('jquery-treegrid/js/jquery.treegrid.bootstrap3')
-
 // Bootstrap Switch
-require('bootstrap-switch')
+$('input.switch').each(function () {
+    $(this).bootstrapSwitch({
+        onText: '是',
+        offText: '否'
+    }).bootstrapSwitch('state', $(this).is(':checked'))
+})
 
 // Bootstrap Fileinput
-require('bootstrap-fileinput')
-require('bootstrap-fileinput/js/locales/zh')
 $.extend($.fn.fileinput.defaults, {
     language: 'zh',
     showClose: false,
@@ -45,7 +44,6 @@ fileinputPreview = function (data) {
 }
 
 // DataTables
-require('datatables.net-bs')
 $.extend($.fn.dataTable.defaults, {
     language: {
         url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Chinese.json'
@@ -53,16 +51,16 @@ $.extend($.fn.dataTable.defaults, {
 })
 
 // iCheck
-require('icheck')
+$('input.icheck').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%'
+})
 
 // Select2
-require('select2')
-
-// WangEditor
-window.wangEditor = require('wangeditor')
-
-// AdminLTE
-require('admin-lte')
+$('select.select2').each(function () {
+    $(this).select2()
+})
 
 // jQuery Extend
 $.fn.ModalFormSubmit = function (callback) {
@@ -84,7 +82,7 @@ $.fn.ModalFormSubmit = function (callback) {
                 toastr.error(req.message)
                 return false
             }
-            $('#modal-form').trigger('click.dismiss.bs.modal')
+            $('#modal-form').modal('hide')
             toastr.success(req.message)
             callback()
             return this
@@ -118,29 +116,6 @@ $(function () {
     } else if (setting.toastr.type == 'error') {
         toastr.error(setting.toastr.message)
     }
-
-    // Form Style
-    $('input.icp').iconpicker({
-        placement: 'bottomRight',
-        templates: {
-            search: '<input type="search" class="form-control iconpicker-search" placeholder="筛选" />'
-        }
-    })
-
-    $('input.switch').each(function () {
-        $(this).bootstrapSwitch({
-            onText: '是',
-            offText: '否'
-        }).bootstrapSwitch('state', $(this).is(':checked'))
-    })
-
-    $('input.icheck').iCheck({
-        checkboxClass: 'icheckbox_square-blue',
-        radioClass: 'iradio_square-blue',
-        increaseArea: '20%'
-    })
-
-    $('select.select2').select2()
 
     // Modal
     $("#modal-form").on("hidden.bs.modal", function () {
