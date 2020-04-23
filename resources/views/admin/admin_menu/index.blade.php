@@ -70,7 +70,8 @@
       }
     });
 
-    $(document).on('click', '#libra-form .submit', function () {
+    $(document).on('click', '#libra-form input:submit', function (e) {
+      e.preventDefault();
       $("#libra-form").ModalFormSubmit(function () {
         table.ajax.reload();
       })

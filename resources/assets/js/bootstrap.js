@@ -16,6 +16,8 @@ try {
 
     window.toastr = require('toastr')
 
+    require('jquery-form')
+
     require('jquery-treegrid/js/jquery.treegrid')
     require('jquery-treegrid/js/jquery.treegrid.bootstrap3')
 

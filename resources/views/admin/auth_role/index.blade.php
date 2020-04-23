@@ -24,7 +24,7 @@
         </table>
       </div>
     </div>
-    <div class="box box-primary " id="filter">
+    <form class="box box-primary form-horizontal" id="libra-filter">
       <div class="box-header with-border">
         <h3 class="box-title">{{__('admin.filter')}}</h3>
         <div class="box-tools pull-right">
@@ -33,22 +33,25 @@
       </div>
       <div class="box-body">
         <div class="row">
-          {!! Form::open(['class' => 'form-horizontal']) !!}
-          <div class="col-md-12">
-            <div class="form-group">
-              {{ Form::label('guard_name', '分组', ['class' => 'col-md-1 control-label']) }}
-              <div class="col-md-2">
-                {{ Form::mySelect('guard_name', guards(), __('admin.all'), null, ['class' => 'form-control select2']) }}
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="guard_name" class="col-md-1 control-label">分组</label>
+                <div class="col-md-2">
+                  <select class="form-control select2" name="guard_name">
+                    <option value="0">全部</option>
+                    @foreach (guards() as $guard)
+                    <option value="{{$guard}}">{{$guard}}</option>
+                    @endforeach
+                  </select>
+                </div>
               </div>
             </div>
-          </div>
-          {!! Form::close() !!}
         </div>
       </div>
       <div class="box-footer">
         {{ Form::submit(null, ['class' => 'btn btn-primary']) }}
       </div>
-    </div>
+    </form>
   </div>
 </div>
 @endsection
@@ -86,15 +89,17 @@
       ]
     });
 
-    $(document).on('click', '#libra-form .submit', function () {
+    $(document).on('click', '#libra-form input:submit', function (e) {
+      e.preventDefault();
       $("#libra-form").ModalFormSubmit(function () {
         table.ajax.reload();
       })
     });
 
-    $(document).on('click', '#filter input:submit', function () {
+    $(document).on('click', '#libra-filter input:submit', function (e) {
+      e.preventDefault();
       table.settings()[0].ajax.data = {
-        filter: $("#filter form").serializeObject()
+        filter: $("#libra-filter").serializeObject()
       };
       table.ajax.reload();
     })

@@ -21,6 +21,7 @@ $('input.switch').each(function () {
 })
 
 // Bootstrap Fileinput
+require('bootstrap-fileinput/js/locales/zh')
 $.extend($.fn.fileinput.defaults, {
     language: 'zh',
     showClose: false,
@@ -58,25 +59,12 @@ $('input.icheck').iCheck({
 })
 
 // Select2
-$('select.select2').each(function () {
-    $(this).select2()
-})
+$('select.select2').select2()
 
 // jQuery Extend
 $.fn.ModalFormSubmit = function (callback) {
-    let form = this
-    let formData = form.serializeObject()
-    let method = 'GET'
-    if (formData._method) {
-        method = formData._method
-    } else if (form.attr('method')) {
-        method = form.attr('method')
-    }
-    $.ajax({
-        url: form.attr('action'),
-        type: method,
-        dataType: 'json',
-        data: formData,
+    let $form = $(this)
+    $form.ajaxSubmit({
         success: function (req) {
             if (req.code != 0) {
                 toastr.error(req.message)
@@ -90,10 +78,10 @@ $.fn.ModalFormSubmit = function (callback) {
         error: function (req) {
             let res = req.responseJSON
             if (res.errors) {
-                form.find('.form-group').removeClass('has-error')
-                form.find('.help-block').remove()
+                $form.find('.form-group').removeClass('has-error')
+                $form.find('.help-block').remove()
                 $.each(res.errors, function (field, errors) {
-                    let $field = form.find('#' + field)
+                    let $field = $form.find('#' + field)
                     $field.parent('.form-group').addClass('has-error')
                     $.each(errors, function (i, error) {
                         $field.parent('.form-group').append($('<span></span>').addClass('help-block').text(error))

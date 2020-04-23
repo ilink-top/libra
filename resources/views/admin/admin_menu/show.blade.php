@@ -47,9 +47,10 @@
   @if (Route::is('*.show'))
   {{ Form::button(__('admin.close'), ['class' => 'btn btn-default', 'data-dismiss' => 'modal']) }}
   @else
-  {{ Form::button(__('admin.submit'), ['class' => 'btn btn-primary pull-left submit', 'disabled' => Route::is('*.show')]) }}
+  {{ Form::submit(null, ['class' => 'btn btn-primary pull-left', 'disabled' => Route::is('*.show')]) }}
   {{ Form::reset(null, ['class' => 'btn btn-default', 'disabled' => Route::is('*.show')]) }}
   @endif
 </div>
 {!! Form::close() !!}
+<script src="{{mix('js/bootstrap.js')}}"></script>
 @endsection

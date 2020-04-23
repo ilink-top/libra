@@ -58,12 +58,9 @@
       ]
     });
 
-    $('#libra-table').on('click', '.modal-delete', function () {
-      $(this).ModalDelete();
-    });
-
-    $(document).on('click', '#libra-form .submit', function () {
-      $("#libra-form").ModalForm(function() {
+    $(document).on('click', '#libra-form input:submit', function (e) {
+      e.preventDefault();
+      $("#libra-form").ModalFormSubmit(function () {
         table.ajax.reload();
       })
     });

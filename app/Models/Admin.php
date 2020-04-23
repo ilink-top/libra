@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\UploadedFile;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable
@@ -44,7 +45,11 @@ class Admin extends Authenticatable
 
     public function setAvatarAttribute($value)
     {
-        $this->attributes['avatar'] = $value->store(upload_path());
+        if ($value instanceof UploadedFile) {
+            $this->attributes['avatar'] = $value->store(upload_path());
+        } else {
+            unset($this->attributes['avatar']);
+        }
     }
 
     public static function guardName()
