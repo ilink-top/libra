@@ -25,34 +25,30 @@
         </table>
       </div>
     </div>
-    <form class="box box-primary form-horizontal" id="libra-filter">
-      <div class="box-header with-border">
-        <h3 class="box-title">{{__('admin.filter')}}</h3>
-        <div class="box-tools pull-right">
-          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        </div>
+    {!! Form::open(['route' => ['admin.auth_role.store'], 'class' => 'box box-primary form-horizontal', 'id' =>
+    'libra-filter']) !!}
+    <div class="box-header with-border">
+      <h3 class="box-title">{{__('admin.filter')}}</h3>
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
       </div>
-      <div class="box-body">
-        <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label for="guard_name" class="col-md-1 control-label">分组</label>
-                <div class="col-md-2">
-                  <select class="form-control select2" name="guard_name">
-                    <option value="0">全部</option>
-                    @foreach (guards() as $guard)
-                    <option value="{{$guard}}">{{$guard}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            {{ Form::label('filter[guard_name]', '分组', ['class' => 'col-md-1 control-label']) }}
+            <div class="col-md-2">
+              {{ Form::mySelect('filter[guard_name]', guards(), __('admin.all'), null, ['class' => 'form-control select2']) }}
             </div>
+          </div>
         </div>
       </div>
-      <div class="box-footer">
-        {{ Form::submit(null, ['class' => 'btn btn-primary']) }}
-      </div>
-    </form>
+    </div>
+    <div class="box-footer">
+      {{ Form::submit(null, ['class' => 'btn btn-primary']) }}
+    </div>
+    {!! Form::close() !!}
   </div>
 </div>
 @endsection
@@ -101,9 +97,7 @@
 
     $(document).on('submit', '#libra-filter', function (e) {
       e.preventDefault();
-      table.settings()[0].ajax.data = {
-        filter: $(this).serializeObject()
-      };
+      table.settings()[0].ajax.data = $(this).serializeObject();
       table.ajax.reload();
     })
   });

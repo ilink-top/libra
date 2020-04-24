@@ -1,4 +1,4 @@
-require('./bootstrap');
+require('./bootstrap')
 
 // jQuery Toastr
 toastr.options = {
@@ -122,10 +122,10 @@ $(function () {
     // Modal
     $('#modal-form').on('hidden.bs.modal', function () {
         $(this).removeData('bs.modal')
-    });
+    })
     $('#modal-form').on('shown.bs.modal', function () {
         $(this).formInit()
-    });
+    })
 
     $(document).on('click', '.modal-form', function () {
         $('#modal-form').modal({
