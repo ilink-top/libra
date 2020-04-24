@@ -1,4 +1,4 @@
-# LibraAdmin
+# Libra Admin
 
 基于Laravel的后台管理系统
 
