@@ -29,7 +29,7 @@
   @endif
   <div class="form-group">
     {{ Form::label('avatar', '头像') }}
-    {{ Form::file('avatar', ['disabled' => Route::is('*.show')]) }}
+    {{ Form::myFile('avatar', null, ['disabled' => Route::is('*.show')]) }}
   </div>
   <div class="form-group">
     {{ Form::label('role_id[]', '角色') }}
@@ -46,15 +46,3 @@
 </div>
 {!! Form::close() !!}
 @endsection
-@push('scripts')
-<script>
-  $(function () {
-    var fileinputOptions = {};
-    var avatarData = "{{!empty($info->avatar) ? asset($info->avatar) : ''}}";
-    if (avatarData) {
-      fileinputOptions.initialPreview = fileinputPreview(avatarData);
-    }
-    $('#avatar').fileinput(fileinputOptions)
-  })
-</script>
-@endpush

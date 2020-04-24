@@ -31,18 +31,23 @@ $.extend($.fn.fileinput.defaults, {
     dropZoneEnabled: false,
     allowedFileTypes: ['image']
 })
-fileinputPreview = function (data) {
-    if (typeof (data) != 'object') {
-        data = [data]
-    }
-    let preview = []
-    $(data).each(function (i, v) {
-        if (v.length > 0) {
-            preview.push("<img src='" + v + "' class='file-preview-image'>")
-        }
+$('input:file').each(function () {
+    let $file = $(this)
+    $file.fileinput({
+        initialPreview: function () {
+            let preview = []
+            let value = $file.data('value')
+            if (value) {
+                $.each(value.split(','), function (i, v) {
+                    if (v.length > 0) {
+                        preview.push("<img src='" + v + "' class='file-preview-image'>")
+                    }
+                })
+            }
+            return preview
+        }()
     })
-    return preview
-}
+})
 
 // DataTables
 $.extend($.fn.dataTable.defaults, {

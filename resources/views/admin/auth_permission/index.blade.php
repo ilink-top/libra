@@ -92,17 +92,17 @@
       ]
     });
 
-    $(document).on('click', '#libra-form input:submit', function (e) {
+    $(document).on('submit', '#libra-form', function (e) {
       e.preventDefault();
-      $("#libra-form").ModalFormSubmit(function () {
+      $(this).ModalFormSubmit(function () {
         table.ajax.reload();
       })
     });
 
-    $(document).on('click', '#libra-filter input:submit', function (e) {
+    $(document).on('submit', '#libra-filter', function (e) {
       e.preventDefault();
       table.settings()[0].ajax.data = {
-        filter: $("#libra-filter").serializeObject()
+        filter: $(this).serializeObject()
       };
       table.ajax.reload();
     })

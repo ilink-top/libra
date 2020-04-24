@@ -85,9 +85,11 @@
         </h1>
         <ol class="breadcrumb">
           <li><a href="{{route('admin.home')}}"><i class="fa fa-dashboard"></i> {{__('admin.home')}}</a></li>
+          @section('bread')
           @foreach ($system['bread'] as $row)
           <li class="active"><i class="fa {{$row->icon}}"></i> {{$row->name}}</li>
           @endforeach
+          @show
         </ol>
       </section>
       <section class="content container-fluid">

@@ -26,7 +26,6 @@ try {
     require('bootstrap-switch')
 
     require('bootstrap-fileinput')
-    require('bootstrap-fileinput/js/locales/zh')
 
     require('datatables.net-bs')
 

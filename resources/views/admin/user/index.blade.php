@@ -58,9 +58,9 @@
       ]
     });
 
-    $(document).on('click', '#libra-form input:submit', function (e) {
+    $(document).on('submit', '#libra-form', function (e) {
       e.preventDefault();
-      $("#libra-form").ModalFormSubmit(function () {
+      $(this).ModalFormSubmit(function () {
         table.ajax.reload();
       })
     });

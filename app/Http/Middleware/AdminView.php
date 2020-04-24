@@ -38,7 +38,17 @@ class AdminView
                     $data[$val] = $val;
                 }
             }
-            return \Form::select($name, $data, $selected, $selectAttributes, $optionsAttributes, $optgroupsAttributes);
+            return $this->select($name, $data, $selected, $selectAttributes, $optionsAttributes, $optgroupsAttributes);
+        });
+
+        // Laravel Collective Html File 重写
+        \Form::macro('myFile', function ($name, $value = null, $options = []) {
+            $valueArray = explode(',', $this->getValueAttribute($name, $value));
+            foreach ($valueArray as $key => $val) {
+                $valueArray[$key] = asset($val);
+            }
+            $options['data-value'] = implode(',', $valueArray);
+            return $this->file($name, $options);
         });
 
         return $next($request);
