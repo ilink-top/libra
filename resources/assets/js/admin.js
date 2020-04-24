@@ -1,3 +1,5 @@
+require('./bootstrap');
+
 // jQuery Toastr
 toastr.options = {
     'closeButton': true,

@@ -52,5 +52,4 @@
   @endif
 </div>
 {!! Form::close() !!}
-<script src="{{mix('js/bootstrap.js')}}"></script>
 @endsection

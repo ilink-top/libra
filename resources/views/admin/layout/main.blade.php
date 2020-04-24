@@ -126,7 +126,6 @@
     </div>
     {!! Form::close() !!}
   </div>
-  <script src="{{mix('js/bootstrap.js')}}"></script>
   <script src="{{mix('js/admin.js')}}"></script>
   <script>
     var setting = {
