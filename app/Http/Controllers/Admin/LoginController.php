@@ -20,6 +20,14 @@ class LoginController extends BaseController
         return view('login.index');
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        $user->updateLoginTime();
+        return $request->wantsJson()
+        ? new Response('', 204)
+        : redirect()->intended($this->redirectPath());
+    }
+
     protected function loggedOut(Request $request)
     {
         return redirect()->route('admin.login');

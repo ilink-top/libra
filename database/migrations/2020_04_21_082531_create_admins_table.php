@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->rememberToken();
+            $table->timestamp('logined_at')->nullable();
             $table->timestamps();
         });
 

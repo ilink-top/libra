@@ -68,4 +68,10 @@ class Admin extends Authenticatable
         $route = app('router')->getRoutes()->match($request);
         return $this->getDisabledPermissions()->contains('name', $route->getName());
     }
+
+    public function updateLoginTime()
+    {
+        $this->logined_at = date('Y-m-d H:i:s');
+        return $this->save();
+    }
 }

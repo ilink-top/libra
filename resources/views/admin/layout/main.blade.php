@@ -15,7 +15,7 @@
   <![endif]-->
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue fixed sidebar-mini">
   <div class="wrapper">
     <header class="main-header">
       <a href="{{route('admin.home')}}" class="logo">
@@ -30,12 +30,12 @@
           <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="user-image" alt="User Image">
+                <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="user-image" alt="User Avatar">
                 <span class="hidden-xs">{{$system['user']->username}}</span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
-                  <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="img-circle" alt="User Image">
+                  <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="img-circle" alt="User Avatar">
                   <p>
                     {{$system['user']->username}}
                   </p>
@@ -59,7 +59,7 @@
       <section class="sidebar">
         <div class="user-panel">
           <div class="pull-left image">
-            <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="img-circle" alt="User Image">
+            <img src="{{asset($system['user']->avatar ?: 'images/avatar.png')}}" class="img-circle" alt="User Avatar">
           </div>
           <div class="pull-left info">
             <p>{{$system['user']->username}}</p>
