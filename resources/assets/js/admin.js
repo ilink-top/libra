@@ -1,24 +1,8 @@
-// Font Awesome Iconpicker
-$('input.icp').iconpicker({
-    placement: 'bottomRight',
-    templates: {
-        search: '<input type="search" class="form-control iconpicker-search" placeholder="筛选" />'
-    }
-})
-
 // jQuery Toastr
 toastr.options = {
     'closeButton': true,
     'positionClass': 'toast-top-center',
 }
-
-// Bootstrap Switch
-$('input.switch').each(function () {
-    $(this).bootstrapSwitch({
-        onText: '是',
-        offText: '否'
-    }).bootstrapSwitch('state', $(this).is(':checked'))
-})
 
 // Bootstrap Fileinput
 require('bootstrap-fileinput/js/locales/zh')
@@ -31,23 +15,6 @@ $.extend($.fn.fileinput.defaults, {
     dropZoneEnabled: false,
     allowedFileTypes: ['image']
 })
-$('input:file').each(function () {
-    let $file = $(this)
-    $file.fileinput({
-        initialPreview: function () {
-            let preview = []
-            let value = $file.data('value')
-            if (value) {
-                $.each(value.split(','), function (i, v) {
-                    if (v.length > 0) {
-                        preview.push("<img src='" + v + "' class='file-preview-image'>")
-                    }
-                })
-            }
-            return preview
-        }()
-    })
-})
 
 // DataTables
 $.extend($.fn.dataTable.defaults, {
@@ -56,18 +23,8 @@ $.extend($.fn.dataTable.defaults, {
     }
 })
 
-// iCheck
-$('input.icheck').iCheck({
-    checkboxClass: 'icheckbox_square-blue',
-    radioClass: 'iradio_square-blue',
-    increaseArea: '20%'
-})
-
-// Select2
-$('select.select2').select2()
-
 // jQuery Extend
-$.fn.ModalFormSubmit = function (callback) {
+$.fn.modalFormSubmit = function (callback) {
     let $form = $(this)
     $form.ajaxSubmit({
         success: function (req) {
@@ -95,14 +52,64 @@ $.fn.ModalFormSubmit = function (callback) {
             } else if (res.message) {
                 toastr.error(res.message)
             } else {
-                toastr.error("{{__('admin.failed')}}")
+                toastr.error('失败')
             }
             return this
         }
     })
 }
 
+$.fn.formInit = function () {
+    let $form = $(this)
+
+    // Font Awesome Iconpicker
+    $form.find('input.icp').iconpicker({
+        placement: 'bottomRight',
+        templates: {
+            search: '<input type="search" class="form-control iconpicker-search" placeholder="筛选" />'
+        }
+    })
+
+    // Bootstrap Switch
+    $form.find('input.switch').each(function () {
+        $(this).bootstrapSwitch({
+            onText: '是',
+            offText: '否'
+        }).bootstrapSwitch('state', $(this).is(':checked'))
+    })
+
+    // Bootstrap Fileinput
+    $form.find('input:file').each(function () {
+        let $file = $(this)
+        let value = $file.data('value')
+        let preview = []
+        if (value) {
+            $.each(value.split(','), function (i, v) {
+                if (v.length > 0) {
+                    preview.push('<img src="' + v + '" class="file-preview-image">')
+                }
+            })
+        }
+        $file.fileinput({
+            initialPreview: preview
+        })
+    })
+
+    // iCheck
+    $form.find('input.icheck').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%'
+    })
+
+    // Select2
+    $form.find('select.select2').select2()
+}
+
 $(function () {
+    // Form Initialize
+    $(document).formInit()
+
     // Setting
     if (setting.toastr.type == 'success') {
         toastr.success(setting.toastr.message)
@@ -111,8 +118,11 @@ $(function () {
     }
 
     // Modal
-    $("#modal-form").on("hidden.bs.modal", function () {
-        $(this).removeData("bs.modal")
+    $('#modal-form').on('hidden.bs.modal', function () {
+        $(this).removeData('bs.modal')
+    });
+    $('#modal-form').on('shown.bs.modal', function () {
+        $(this).formInit()
     });
 
     $(document).on('click', '.modal-form', function () {

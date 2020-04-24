@@ -91,7 +91,7 @@
 
     $(document).on('submit', '#libra-form', function (e) {
       e.preventDefault();
-      $(this).ModalFormSubmit(function () {
+      $(this).modalFormSubmit(function () {
         table.ajax.reload();
       })
     });

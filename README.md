@@ -61,6 +61,7 @@ npm run dev
 - [iCheck](https://github.com/fronteed/icheck)
 - [jQuery](https://github.com/jquery/jquery)
 - [jQuery DataTables](https://github.com/DataTables/Dist-DataTables-Bootstrap)
+- [jQuery Form Plugin](https://github.com/jquery-form/form)
 - [jQuery Serialize Object](https://github.com/macek/jquery-serialize-object)
 - [jQuery Toastr](https://github.com/CodeSeven/toastr)
 - [jQuery TreeGrid](https://github.com/maxazan/jquery-treegrid)
