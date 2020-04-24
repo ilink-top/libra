@@ -1,21 +1,23 @@
 # LibraAdmin
 
+基于Laravel的后台管理系统
+
 ## 快速安装
 
-> 第一步：安装程序
+> 安装程序
 
 ```
 git clone https://github.com/ilink-top/LibraAdmin.git /path/to/your/project
 cd /path/to/your/project
 ```
 
-> 第二步：安装 Composer 包
+> 安装 Composer 包
 
 ```
 composer install
 ```
 
-> 第三步：程序初始化
+> 程序初始化
 
 ```
 composer run-script post-root-package-install
@@ -23,28 +25,23 @@ composer run-script post-create-project-cmd
 composer run-script post-autoload-dump
 ```
 
-> 第四步：创建符号链接
+> 创建符号链接
 
 ```
 php artisan storage:link
 ```
 
-> 第五步：配置数据库并导入数据
+> 配置数据库并导入数据
 
 ```
 php artisan migrate
 php artisan db:seed
 ```
 
-> 第六步：安装 Node 包
+> 安装 Node 包并运行
 
 ```
 npm install
-```
-
-> 第七步：生成静态文件
-
-```
 npm run dev
 ```
 
