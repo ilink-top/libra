@@ -29,6 +29,12 @@ try {
 
     require('datatables.net-bs')
 
+    require('icheck')
+
+    require('select2')
+
+    window.wangEditor = require('wangeditor')
+
     require('admin-lte')
 } catch (e) {}
 
@@ -58,9 +64,3 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-require('icheck')
-
-require('select2')
-
-window.wangEditor = require('wangeditor')
