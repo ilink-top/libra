@@ -7,8 +7,8 @@
 > 安装程序
 
 ```
-git clone https://github.com/ilink-top/LibraAdmin.git /path/to/your/project
-cd /path/to/your/project
+git clone https://github.com/ilink-top/LibraAdmin.git /path/to/your/program
+cd /path/to/your/program
 ```
 
 > 安装 Composer 包
