@@ -13,7 +13,7 @@ class IndexController extends BaseController
                 'os' => PHP_OS,
                 'php_version' => PHP_VERSION,
                 'upload_max_filesize' => get_cfg_var('upload_max_filesize') ? get_cfg_var('upload_max_filesize') : '不允许上传附件',
-                'max_execution_time' => get_cfg_var("max_execution_time"),
+                'max_execution_time' => get_cfg_var('max_execution_time'),
             ],
             'lastLoginAdmins' => Admin::orderBy('logined_at', 'desc')->limit(8)->get(),
         ]);

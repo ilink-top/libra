@@ -1,4 +1,4 @@
-# Libra Admin
+# Libra
 
 基于Laravel的后台管理系统
 
@@ -7,7 +7,7 @@
 > 安装程序
 
 ```
-git clone https://github.com/ilink-top/LibraAdmin.git /path/to/your/program
+git clone https://github.com/ilink-top/libra.git /path/to/your/program
 cd /path/to/your/program
 ```
 
